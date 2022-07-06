@@ -1,75 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Carousel as Banner } from "antd";
+import { getCarouselAction } from "../../../redux/actions/carouselAction";
 
+const contentStyle = {
+  height: "600px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  backgroundPosition: "center",
+  backgroundSize: "100%",
+  backgroundRepeat: "no-repeat",
+};
 function Carousel() {
+  const { arrBanner } = useSelector((state) => state.carouselReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //1. dispatch action = {type, data}
+    //2. dispatach hàm thì phải cài middleware
+
+    //khi gọi hàm getCarouselAction() -> return về 1 hàm
+    //hàm này truyền vào dispatch
+    // lúc này dispatch bên trong redux-thunk tạm hoãn gửi lên reducer
+    //vì chờ gọi xong api => thành công  => dispatch({
+    //   type: GET_CAROUSEL,
+    //   arrBanner: result.content,
+    // }); lên reducer
+    dispatch(getCarouselAction());
+  }, []);
+
+  const renderBanner = () => {
+    return arrBanner.map((banner) => {
+      return (
+        <div key={banner.maBanner}>
+          <div
+            style={{
+              ...contentStyle,
+              backgroundImage: `url(${banner.hinhAnh})`,
+            }}
+          >
+            <img
+              style={{ width: "100%", opacity: 0 }}
+              src={banner.hinhAnh}
+              alt={banner.maPhim}
+            />
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
-    <div
-      id="carouselExampleCaptions"
-      className="carousel slide"
-      data-ride="carousel"
-    >
-      <ol className="carousel-indicators">
-        <li
-          data-target="#carouselExampleCaptions"
-          data-slide-to={0}
-          className="active"
-        />
-        <li data-target="#carouselExampleCaptions" data-slide-to={1} />
-        <li data-target="#carouselExampleCaptions" data-slide-to={2} />
-      </ol>
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img
-            src="https://movienew.cybersoft.edu.vn/hinhanh/ban-tay-diet-quy.png"
-            className="d-block w-100"
-            alt="..."
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <img
-            src="https://movienew.cybersoft.edu.vn/hinhanh/lat-mat-48h.png"
-            className="d-block w-100"
-            alt="..."
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <img
-            src="https://movienew.cybersoft.edu.vn/hinhanh/cuoc-chien-sinh-tu.png"
-            className="d-block w-100"
-            alt="..."
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-target="#carouselExampleCaptions"
-        data-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true" />
-        <span className="sr-only">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-target="#carouselExampleCaptions"
-        data-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="sr-only">Next</span>
-      </button>
-    </div>
+    <Banner autoplay effect="fade">
+      {renderBanner()}
+    </Banner>
   );
 }
 
