@@ -4,9 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "jquery/dist/jquery.min.js";
 import "popper.js/dist/popper.min.js";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-import "antd/dist/antd.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -14,6 +11,10 @@ import { Provider } from "react-redux";
 import rootReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import GlobalStyles from "./components/GlobalStyles";
+import "antd/dist/antd.css";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

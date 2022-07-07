@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Carousel as Banner } from "antd";
 import { getCarouselAction } from "../../../redux/actions/carouselAction";
+import "./Carousel.css";
 
 const contentStyle = {
   height: "600px",
@@ -31,7 +32,7 @@ function Carousel() {
   }, []);
 
   const renderBanner = () => {
-    return arrBanner.map((banner) => {
+    return arrBanner?.map((banner) => {
       return (
         <div key={banner.maBanner}>
           <div

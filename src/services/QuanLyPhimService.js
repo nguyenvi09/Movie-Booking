@@ -1,6 +1,7 @@
 //tạo file này quản lý tương ứng với API BE tạo
 // tạo 1 lớp đối tượng
 
+import { GROUPID } from "../util/settings/config";
 import { BaseService } from "./BaseService";
 
 export class QuanLyPhimService extends BaseService {
@@ -11,6 +12,10 @@ export class QuanLyPhimService extends BaseService {
   layDanhSachBanner = () => {
     //method get() kế thừa từ class BaseService
     return this.get(`/api/QuanLyPhim/LayDanhSachBanner`);
+  };
+
+  layDanhSachPhim = () => {
+    return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
   };
 }
 

@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import carouselReducer from "./carousel/carouselReducer";
-import listMovieReducer from "./list-movie/listMovieReducer";
+import quanLyPhimReducer from "./quan-ly-phim/quanLyPhimReducer";
 const rootReducer = combineReducers({
   //chứa state ứng dụng
   carouselReducer,
-  listMovieReducer,
+  quanLyPhimReducer,
 });
 
 export default rootReducer;
