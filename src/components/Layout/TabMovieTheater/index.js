@@ -63,7 +63,14 @@ export default class Demo extends React.PureComponent {
                                 {phim.tenPhim}
                               </h1>
                               <p>{cumRap.diaChi}</p>
-                              <div className="grid grid-cols-6 gap-6">
+                              <div
+                                style={{
+                                  display: "grid",
+                                  gap: "20px",
+                                  gridTemplateColumns:
+                                    "auto auto auto auto auto auto",
+                                }}
+                              >
                                 {phim.lstLichChieuTheoPhim
                                   ?.slice(0, 12)
                                   .map((lichChieu, index) => {

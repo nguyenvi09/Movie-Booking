@@ -4,7 +4,7 @@ function Header() {
   return (
     <nav
       className="navbar navbar-inverse position-fixed w-100 pl-5 pr-5"
-      style={{ zIndex: "2" }}
+      style={{ zIndex: "2", backgroundColor: "rgba(0,0,0,.5)" }}
     >
       <div className="container-fluid">
         <div className="navbar-header">
@@ -18,24 +18,50 @@ function Header() {
         </div>
         <ul className="nav" style={{ gap: "2rem" }}>
           <li className="active">
-            <a href="#">Home</a>
+            <a
+              style={{
+                color: "white",
+                fontSize: "2rem",
+                fontWeight: "600",
+                fontWeight: "600",
+              }}
+              href="#"
+            >
+              Trang chủ
+            </a>
           </li>
           <li>
-            <a href="#">Page 1</a>
+            <a
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+              href="#"
+            >
+              Blog phim ảnh{" "}
+            </a>
           </li>
           <li>
-            <a href="#">Page 2</a>
+            <a
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+              href="#contact"
+            >
+              Liên hệ
+            </a>
           </li>
         </ul>
         <ul className="nav navbar-right" style={{ gap: "2rem" }}>
           <li>
-            <a href="#">
-              <span className="glyphicon glyphicon-user" /> Sign Up
+            <a
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+              href="#"
+            >
+              <span className="fa-solid fa-user" /> Sign Up
             </a>
           </li>
           <li>
-            <a href="#">
-              <span className="glyphicon glyphicon-log-in" /> Login
+            <a
+              style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
+              href="#"
+            >
+              <span className="fa-solid fa-right-to-bracket" /> Login
             </a>
           </li>
         </ul>
