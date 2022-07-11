@@ -1,5 +1,8 @@
 import { quanLyRapService } from "../../services/QuanLyRapService";
-import { SET_HE_THONG_RAP_CHIEU } from "../contants/movie-booking";
+import {
+  SET_CHI_TIET_PHIM,
+  SET_HE_THONG_RAP_CHIEU,
+} from "../contants/movie-booking";
 
 export const layDanhSachHeThongRap = () => {
   return async (dispatch) => {
@@ -11,6 +14,20 @@ export const layDanhSachHeThongRap = () => {
       });
     } catch (error) {
       console.log("error", error);
+    }
+  };
+};
+
+export const layThongTinChiTietPhim = (id) => {
+  return async (dispatch) => {
+    try {
+      //gọi service để trả về kết quả
+      const result = await quanLyRapService.layThongTinLichChieuPhim(id);
+
+      //sau đó mới gửi lên reducer bằng hàm dispatch của thunk trả ra
+      dispatch({ type: SET_CHI_TIET_PHIM, data: result.data.content });
+    } catch (errors) {
+      console.log("errors", errors.response?.data);
     }
   };
 };

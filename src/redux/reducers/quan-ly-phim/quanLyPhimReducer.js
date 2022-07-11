@@ -1,5 +1,6 @@
 import {
   GET_LIST_MOVIE,
+  SET_CHI_TIET_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
 } from "../../contants/movie-booking";
@@ -9,6 +10,7 @@ const initialState = {
   dangChieu: true,
   sapChieu: true,
   arrMovieDefault: [],
+  movieDetail: {},
 };
 
 const quanLyPhimReducer = (state = initialState, action) => {
@@ -32,6 +34,10 @@ const quanLyPhimReducer = (state = initialState, action) => {
       state.arrMovie = state.arrMovieDefault.filter(
         (movie) => movie.sapChieu === state.sapChieu
       );
+      return { ...state };
+    }
+    case SET_CHI_TIET_PHIM: {
+      state.movieDetail = action.data;
       return { ...state };
     }
     default:
