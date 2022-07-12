@@ -4,6 +4,9 @@ import {
   SET_HE_THONG_RAP_CHIEU,
 } from "../contants/movie-booking";
 
+//layDanhSachHeThongRap -> thunk action creator
+// return async (dispatch) =>{} -> thunk function nhận đối số là dispatch method
+// gọi api xong -> dispatch reducer
 export const layDanhSachHeThongRap = () => {
   return async (dispatch) => {
     try {

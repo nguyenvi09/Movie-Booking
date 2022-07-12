@@ -17,7 +17,7 @@ function Detail(props) {
   const { id } = useParams();
 
   useEffect(() => {
-    //dispatch func theo cơ chế redux thunk
+    //dispatch thunk action creator
     dispatch(layThongTinChiTietPhim(id));
   }, []);
   return (

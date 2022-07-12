@@ -57,12 +57,12 @@ function Header() {
             </a>
           </li>
           <li>
-            <a
+            <NavLink
+              to="/login"
               style={{ color: "white", fontSize: "2rem", fontWeight: "600" }}
-              href="#"
             >
               <span className="fa-solid fa-right-to-bracket" /> Login
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
