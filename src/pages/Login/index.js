@@ -2,26 +2,28 @@ import React from "react";
 import "./login.css";
 import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/quanLyNguoiDungAction";
 
 function Login(props) {
   const dispatch = useDispatch();
+  const { userLogin } = useSelector((state) => state.quanLyNguoiDungReducer);
 
+  console.log("userLogin", userLogin);
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",
       matKhau: "",
     },
     onSubmit: (values) => {
-      const action = dangNhapAction();
+      const action = dangNhapAction(values);
       dispatch(action);
       console.log("values", values);
     },
   });
 
   return (
-    <form onSubmit={() => formik.handleSubmit()} className="vh-100">
+    <form onSubmit={formik.handleSubmit} className="vh-100">
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6 text-black">
@@ -69,7 +71,7 @@ function Login(props) {
                 <div className="pt-1 mb-4">
                   <button
                     className="btn btn-info btn-lg btn-block"
-                    type="button"
+                    type="submit"
                   >
                     Đăng nhập
                   </button>
